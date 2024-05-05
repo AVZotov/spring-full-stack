@@ -1,5 +1,6 @@
 package ru.zotov;
 
+import net.datafaker.Faker;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -15,17 +16,17 @@ public class Main {
         SpringApplication.run(Main.class, args);
     }
 
-//    @Bean
-//    CommandLineRunner commandLineRunner(CustomerRepository customerRepository){
-//        return args -> {
-//            Random random = new Random();
-//            Faker faker = new Faker();
-//            Customer customer = new Customer(
-//                    faker.name().firstName(),
-//                    faker.internet().safeEmailAddress(),
-//                    random.nextInt(19,81)
-//            );
-//            customerRepository.save(customer);
-//        };
-//    }
+    @Bean
+    CommandLineRunner commandLineRunner(CustomerRepository customerRepository){
+        return args -> {
+            Random random = new Random();
+            Faker faker = new Faker();
+            Customer customer = new Customer(
+                    faker.name().firstName(),
+                    faker.internet().safeEmailAddress(),
+                    random.nextInt(19,81)
+            );
+            customerRepository.save(customer);
+        };
+    }
 }
